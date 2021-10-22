@@ -9,12 +9,27 @@ export default function Header({ searchItem }) {
     const onChangeText = (text) => {
         setValue(text);
     };
+
+    function toThaiDateString(date) {
+        let monthNames = [
+            "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+            "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
+            "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+        ];
+        let year = date.getFullYear() + 543;
+        let month = monthNames[date.getMonth()];
+        let numOfDay = date.getDate();
+        return `${numOfDay} ${month} ${year} `;
+    }
     
+    let date1 = new Date();
+    let thaidate = toThaiDateString(date1);
+
     return (
         <>
             <ComponentContainer>
                 <HeaderText>To-Do.</HeaderText>
-                <HeaderList>{today}</HeaderList>
+                <HeaderList>{thaidate}</HeaderList>
             </ComponentContainer>
             <SearchContainer>
                 <InputContainer>
